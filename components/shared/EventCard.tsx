@@ -1,5 +1,5 @@
+import Image from "next/image";
 import type { Event } from "@/lib/data/events";
-import { ImagePlaceholder } from "./ImagePlaceholder";
 
 const categoryColors: Record<Event["category"], string> = {
   "live-music": "bg-primary text-white",
@@ -16,10 +16,15 @@ interface EventCardProps {
 export function EventCard({ event }: EventCardProps) {
   return (
     <div className="overflow-hidden rounded-lg border border-dark/10 bg-white shadow-sm transition-shadow hover:shadow-md">
-      <ImagePlaceholder
-        alt={`${event.title} event`}
-        className="h-40 w-full"
-      />
+      <div className="relative h-40 w-full">
+        <Image
+          src={event.image}
+          alt={`${event.title} event`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      </div>
       <div className="p-4">
         <div className="flex items-center gap-2">
           <span

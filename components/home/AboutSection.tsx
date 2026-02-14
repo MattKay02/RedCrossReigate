@@ -1,4 +1,4 @@
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
+import Image from "next/image";
 
 const usps = [
   {
@@ -48,10 +48,15 @@ export function AboutSection() {
             </div>
           </div>
 
-          <ImagePlaceholder
-            alt="Interior of The Red Cross pub - warm and welcoming"
-            className="h-80 rounded-lg md:h-96"
-          />
+          <div className="relative h-80 overflow-hidden rounded-lg md:h-96">
+            <Image
+              src="/images/Interior-bar-area.png"
+              alt="Interior of The Red Cross pub"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </section>

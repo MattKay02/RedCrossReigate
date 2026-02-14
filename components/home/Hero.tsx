@@ -1,16 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PUB_INFO } from "@/lib/data/hours";
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
 
 const heroImages = [
-  "Pub exterior - sunny day with hanging baskets",
-  "Interior bar area - warm lighting and character",
-  "Beer garden - outdoor seating with greenery",
-  "Atmospheric evening shot - cozy pub vibe",
+  { src: "/images/Pub-exterior.png", alt: "The Red Cross pub exterior" },
+  { src: "/images/Interior-bar-area.png", alt: "Interior bar area" },
+  { src: "/images/Beer-garden.jpg", alt: "Beer garden" },
+  { src: "/images/Atmospheric-shot.jpg", alt: "Atmospheric evening shot" },
 ];
 
 export function Hero() {
@@ -34,9 +34,13 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          <ImagePlaceholder
-            alt={heroImages[currentImage]}
-            className="h-full w-full text-light/30"
+          <Image
+            src={heroImages[currentImage].src}
+            alt={heroImages[currentImage].alt}
+            fill
+            className="object-cover"
+            priority={currentImage === 0}
+            sizes="100vw"
           />
         </motion.div>
       </AnimatePresence>

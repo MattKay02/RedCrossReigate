@@ -1,4 +1,4 @@
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -58,14 +58,24 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-4">
-            <ImagePlaceholder
-              alt="The Red Cross pub exterior - traditional English pub"
-              className="h-64 rounded-lg"
-            />
-            <ImagePlaceholder
-              alt="Beer garden at The Red Cross - outdoor seating"
-              className="h-64 rounded-lg"
-            />
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src="/images/Pub-exterior.png"
+                alt="The Red Cross pub exterior"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src="/images/Beer-garden.jpg"
+                alt="Beer garden at The Red Cross"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
